@@ -671,6 +671,27 @@
       "address": "하중로 181",
       "police": "시흥경찰서",
       "confirmed": true
+    },
+    {
+      "id": "office-wirye-posco",
+      "name": "위례 포스코 [사무실]",
+      "address": "성남시 수정구 창곡동 499-190",
+      "police": "성남수정경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "office-ansan-sk",
+      "name": "안산 SK데이터센터 [원청 사무실]",
+      "address": "안산시 단원구 번영로 142 2층",
+      "police": "안산단원경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "office-wonsam",
+      "name": "원삼 반도체 커뮤니티센터 [사무실]",
+      "address": "용인시 처인구 원삼면 고당리 90-11",
+      "police": "용인동부경찰서",
+      "confirmed": true
     }
   ],
   "review_pending": [
