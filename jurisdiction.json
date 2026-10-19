@@ -120,13 +120,6 @@
       "confirmed": true
     },
     {
-      "id": "현장별교섭현황-17",
-      "name": "평택고덕 ABC14 한양건설",
-      "address": null,
-      "police": "평택경찰서",
-      "confirmed": true
-    },
-    {
       "id": "현장별교섭현황-18",
       "name": "평택고덕ABC36블럭우미건설",
       "address": "고덕동 142번지",
@@ -629,33 +622,44 @@
       "address": "처인구 원삼면 독성리 1025",
       "police": "용인동부경찰서",
       "confirmed": true
-    }
-  ],
-  "review_pending": [
+    },
     {
       "id": "현장별교섭현황-32",
       "name": "향남kcc",
       "address": "하길리404",
-      "branch": "남서"
+      "police": "화성서부경찰서",
+      "confirmed": true
     },
     {
       "id": "현장별교섭현황-33",
       "name": "태왕이엔씨 병점동 890,891",
       "address": "병점동 890,891",
-      "branch": "남서"
+      "police": "화성동탄경찰서",
+      "confirmed": true
     },
     {
       "id": "현장별교섭현황-34",
       "name": "동화 2지구 지역주택 조합",
       "address": "동화리 238-31",
-      "branch": "남서"
+      "police": "화성서부경찰서",
+      "confirmed": true
     },
     {
       "id": "소형-3",
       "name": "병점 서영플러스",
       "address": "병점동 884-1",
-      "branch": "남서"
+      "police": "화성동탄경찰서",
+      "confirmed": true
     }
   ],
-  "notes": "행정구역 기준 1차 분류. 실제 신고 제출 전 경찰서 확인 필요."
+  "review_pending": [
+    {
+      "id": "현장별교섭현황-17",
+      "name": "평택고덕 ABC14 한양건설",
+      "address": null,
+      "branch": "남부",
+      "reason": "주소 누락"
+    }
+  ],
+  "notes": "주소 행정구역 기준 1차 추정분류 (경기남부경찰청 관서·지구대 안내 참고). 'confirmed'는 현황판에서 표시하기 위한 값이며 실제 집회 신고 관할 확정이나 접수 확인을 의미하지 않음. 제출 전 검토 필요."
 }
