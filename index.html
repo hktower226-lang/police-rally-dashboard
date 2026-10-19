@@ -1,13 +1,194 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>경찰서별 집회신고 장소</title><style>
-*{box-sizing:border-box}body{font-family:system-ui,"Noto Sans KR",sans-serif;background:#091324;color:#eef5ff;margin:0}.wrap{max-width:1400px;margin:auto;padding:20px}h1{font-size:25px}.muted{color:#a8bad3}.grid,.btns{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}.metric,.panel{background:#192a45;border:1px solid #354e72;border-radius:13px;padding:17px}.metric{flex:1;min-width:145px}.big{font-size:27px;font-weight:800;margin-top:7px}button{cursor:pointer;border:1px solid #47648c;background:#273e61;color:white;border-radius:8px;padding:10px 13px;font-weight:700}button.active{background:#2875cb}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}input{min-width:190px;flex:1;padding:10px;background:#0d1a30;border:1px solid #46608b;color:white;border-radius:8px}table{border-collapse:collapse;width:100%;margin-top:15px}td,th{padding:11px;border-bottom:1px solid #334864;text-align:left;font-size:14px}th{color:#c7d9f1}.scroll{overflow:auto}.hint{padding:12px;border-radius:8px;background:#342d25;color:#ffe3ac}.pill{background:#384d6d;border-radius:15px;padding:3px 8px;white-space:nowrap}@media print{body{background:white;color:black}.btns,.toolbar,.hint{display:none}.panel{border:0}th,td{color:black}}
-</style></head><body><main class="wrap"><h1>관할 경찰서별 집회신고 대상 현황판</h1><p class="muted">현장 현황 JSON 연동 · 경찰서 단추 중심 · 지부 자동 표기</p><div class="grid"><div class="metric">전체 장소<div class="big" id="total">-</div></div><div class="metric">주소 기재<div class="big" id="addr">-</div></div><div class="metric">주소기준 1차 분류<div class="big" id="done">-</div></div><div class="metric">주소 확인 필요<div class="big" id="pending">-</div></div></div><p class="hint">모의실험용입니다. 현재 경찰서 배정은 주소와 행정구역을 통한 1차 분류입니다. 정확한 집회신고 접수 관할은 제출 전 경찰서에 확인해야 합니다. 신고서 지부 선택이나 만료일 계산 기능은 없습니다.</p><div class="panel"><h2>관할 경찰서별 보기</h2><div class="btns" id="buttons">데이터 불러오는 중…</div><div class="toolbar"><input id="search" placeholder="현장명·주소·지부 검색"><button id="download">현재 목록 CSV</button><button onclick="window.print()">인쇄</button></div><p id="summary" class="muted"></p><div class="scroll"><table><thead><tr><th>번호</th><th>현장명 / 장소</th><th>주소</th><th>지부</th><th>구분</th><th>관할 경찰서</th></tr></thead><tbody id="rows"></tbody></table></div></div></main>
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>경찰서별 집회신고 장소 및 연장·신규 현황</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;background:#091324;color:#eef5ff;margin:0}
+.wrap{max-width:1500px;margin:auto;padding:20px}
+h1{font-size:25px;margin-bottom:8px}
+.muted{color:#a8bad3}
+.grid,.btns{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.metric,.panel{background:#192a45;border:1px solid #354e72;border-radius:13px;padding:17px}
+.metric{flex:1;min-width:135px}
+.big{font-size:26px;font-weight:800;margin-top:7px}
+button{cursor:pointer;border:1px solid #47648c;background:#273e61;color:white;border-radius:8px;padding:10px 13px;font-weight:700}
+button.active{background:#2875cb}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
+input,select{padding:10px;background:#0d1a30;border:1px solid #46608b;color:white;border-radius:8px}
+input{min-width:190px;flex:1}
+table{border-collapse:collapse;width:100%;margin-top:15px}
+td,th{padding:11px;border-bottom:1px solid #334864;text-align:left;font-size:14px;vertical-align:top}
+th{color:#c7d9f1}
+.scroll{overflow:auto}
+.hint{padding:12px;border-radius:8px;background:#342d25;color:#ffe3ac;line-height:1.6}
+.pill,.status{display:inline-block;border-radius:15px;padding:3px 8px;white-space:nowrap}
+.pill{background:#384d6d}
+.status.renew{background:#164e39;color:#a7f3d0}
+.status.new{background:#214875;color:#cae2ff}
+.status.review{background:#634322;color:#ffe0a7}
+.note{font-size:12px;color:#adc0dd;max-width:280px;margin-top:6px;line-height:1.45}
+a{color:#98d0ff}
+@media(max-width:650px){.wrap{padding:12px}h1{font-size:21px}td,th{font-size:12px;padding:8px}}
+@media print{body{background:white;color:black}.btns,.toolbar,.hint{display:none}.panel{border:0}th,td,.note{color:black}.metric{border:1px solid gray}a{color:black}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<h1>관할 경찰서별 집회신고 대상 현황판</h1>
+<p class="muted">현장 현황 JSON + 기존 집회신고 내역 실시간 비교 · 경찰서별 분류 · 지부 자동 표기</p>
+<div class="grid">
+<div class="metric">전체 신고 장소<div class="big" id="total">—</div></div>
+<div class="metric">연장 대상<div class="big" id="renew">—</div></div>
+<div class="metric">신규 대상<div class="big" id="new">—</div></div>
+<div class="metric">확인 필요<div class="big" id="review">—</div></div>
+<div class="metric">주소/관할 미확인<div class="big" id="pending">—</div></div>
+</div>
+<p class="hint">
+<strong>분류 기준:</strong> 기존 신고자료에서 동일 주소·관할 경찰서·지부 기록이 확인되면 <b>연장</b>,
+기록이 없으면 <b>신규</b>, 주소 또는 지부가 충돌하거나 특정할 수 없으면 <b>확인 필요</b>로 표시합니다.
+이는 신고 이력 비교용이며 실제 신고서 접수·기간 연장 완료를 뜻하지 않습니다. 신고기간의 만료일 계산은 하지 않습니다.
+신고서 지부를 직접 선택할 필요 없이 현장 JSON의 지부를 표시합니다. 제출 전 담당 경찰서에 관할 및 구체적 집회 장소를 확인하세요.
+</p>
+<div class="panel">
+<h2>관할 경찰서별 보기</h2>
+<div class="btns" id="buttons">자료를 불러오는 중입니다…</div>
+<div class="toolbar">
+<input id="search" placeholder="현장명 · 주소 · 지부 · 경찰서 검색">
+<select id="statusFilter" aria-label="연장 신규 필터">
+<option value="전체">유형 전체</option>
+<option value="연장">연장</option>
+<option value="신규">신규</option>
+<option value="확인 필요">확인 필요</option>
+</select>
+<button id="download">현재 목록 CSV</button>
+<button id="print">인쇄</button>
+</div>
+<p id="summary" class="muted"></p>
+<div class="scroll">
+<table>
+<thead><tr><th>번호</th><th>현장명 / 장소</th><th>주소</th><th>지부</th><th>구분</th><th>관할 경찰서</th><th>신고 구분</th><th>기존 신고 내역</th></tr></thead>
+<tbody id="rows"></tbody>
+</table></div>
+<p class="muted" id="sourceInfo"></p>
+<p><a href="https://hktower226-lang.github.io/rally-report-dashboard/" target="_blank" rel="noopener noreferrer">기존 집회신고 현황판 열기 ↗</a></p>
+</div>
+</main>
 <script>
+"use strict";
 const source="https://raw.githubusercontent.com/hktower226-lang/site-status-dashboard/main/data.json";
-const byId=id=>document.getElementById(id);const escapeHtml=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));let places=[],selected="전체",visible=[];
-async function read(url){const r=await fetch(url+(url.includes("?")?"&":"?")+"v="+Date.now(),{cache:"no-store"});if(!r.ok)throw Error(url+" "+r.status);return r.json()}
+const filingSource="https://raw.githubusercontent.com/hktower226-lang/rally-report-dashboard/main/assemblyData.json";
+const byId=id=>document.getElementById(id);
+const escapeHtml=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let places=[],filings=[],selected="전체",visible=[];
+
+/* 실무상 기존 신고서와 주소·지부의 확인이 필요한 장소.
+   향후 원본 주소나 신고 이력이 명확해지면 항목을 수정/해제할 수 있습니다. */
+const reviewNotes={
+"현장별교섭현황-13":"현장 동원동 215-2, 기존 신고 동원동 217로 지번이 다름",
+"현장별교섭현황-20":"고덕동 산506-3, 기존 효성중공업 신고 산106-7로 지번이 다름",
+"현장별교섭현황-27":"칠괴동 138과 기존 두산 신고 칠괴동 516-1이 다름",
+"현장별교섭현황-32":"하길리 404와 기존 향남 신고 하길리 404-2가 다름",
+"현장별교섭현황-37":"신광교클라우드시티 기존 신고 영덕동 1353, 현장 자료는 영덕동 784",
+"현장별교섭현황-48":"기존 고천나구역 신고 고천동 517, 현장 자료는 265",
+"현장별교섭현황-52":"기존 고천나구역 신고 고천동 517, 현장 자료는 265",
+"현장별교섭현황-53":"기존 효성해링턴스퀘어 신고는 상업5BL, 현장 주소는 갈현동 산37-9",
+"현장별교섭현황-57-office":"하중로 181과 기존 신고의 하중동 181은 주소 표기가 다르므로 동일 장소 확인 필요",
+"현장별교섭현황-58":"안산 신길동 109, 기존 동부건설 신고는 B2B2로 표기되어 확인 필요",
+"현장별교섭현황-64":"안산 신길2지구 A-6, 기존 신고는 A-2로 구획이 다름",
+"소형-25":"수내동 14는 기존 롯데백화점 신고 주소와 같으나 현장명이 캠코이에스 오피스텔로 다름",
+"소형-26":"롯데백화점 현장 주소가 수내동까지만 기재되어 지번 확인 필요",
+"현장별교섭현황-31":"평택 지제역 한화건설은 기존 신고가 '평택지제역 일원'으로 기재되어 정확한 주소 비교 필요",
+"현장별교섭현황-42":"한림제약 기존 신고에 상세 지번이 없어 포곡·유방동 현장 동일 여부 확인 필요"
+};
+async function read(url){const r=await fetch(url+(url.includes("?")?"&":"?")+"v="+Date.now(),{cache:"no-store"});if(!r.ok)throw Error(url+" HTTP "+r.status);return r.json()}
 function police(p){return p.police||"관할 확인 필요"}
-function render(){const names=["전체",...new Set(places.map(police))];byId("buttons").innerHTML=names.map(n=>'<button class="'+(selected===n?"active":"")+'" data-name="'+escapeHtml(n)+'">'+escapeHtml(n)+' ('+(n==="전체"?places.length:places.filter(x=>police(x)===n).length)+')</button>').join("");byId("buttons").querySelectorAll("button").forEach(b=>b.onclick=()=>{selected=b.dataset.name;render()});let q=byId("search").value.trim().toLowerCase();visible=places.filter(p=>(selected==="전체"||police(p)===selected)&&[p.name,p.address,p.branch,p.kind].join(" ").toLowerCase().includes(q));byId("summary").textContent=selected+" · "+visible.length+"곳";byId("rows").innerHTML=visible.map((p,i)=>"<tr><td>"+(i+1)+"</td><td>"+escapeHtml(p.name)+"</td><td>"+escapeHtml(p.address||"주소 미기재")+"</td><td><span class=pill>"+escapeHtml(p.branch||"미분류")+"</span></td><td>"+escapeHtml(p.kind)+"</td><td>"+escapeHtml(police(p))+"</td></tr>").join("")||'<tr><td colspan="6">표시할 장소 없음</td></tr>'}
-function csv(){let rows=[["번호","관할 경찰서","현장명","주소","지부","구분"],...visible.map((p,i)=>[i+1,police(p),p.name,p.address,p.branch,p.kind])];let s="\ufeff"+rows.map(a=>a.map(v=>'"'+String(v??"").replaceAll('"','""')+'"').join(",")).join("\r\n");const u=URL.createObjectURL(new Blob([s],{type:"text/csv;charset=utf-8"}));const a=document.createElement("a");a.href=u;a.download="집회신고_"+selected+".csv";a.click();URL.revokeObjectURL(u)}
-async function main(){try{const [raw,extra,juris]=await Promise.all([read(source),read("./extra-locations.json"),read("./jurisdiction.json")]);places=Object.entries(raw.sheets||{}).flatMap(([sheet,records])=>records.flatMap((p,i)=>{const id=sheet+"-"+i;const full=String(p["현장주소"]||"").trim();const match=full.match(/^(.*?)\s*\(사무실\s*:\s*(.*?)\)\s*$/);const base={id,name:p["현장명"],address:match?match[1].trim():full,branch:p["구분"],kind:sheet==="소형"?"소형":"현장",police:""};return match?[base,{...base,id:id+"-office",name:p["현장명"]+" [사무실]",address:match[2].trim(),kind:"사무실"}]:[base]}));places.push(...(extra.places||[]).map(p=>({...p,kind:"별도 장소",police:""})));for(const p of places){const x=(juris.assignments||[]).find(x=>x.id===p.id||(x.address===p.address&&x.name===p.name));if(x?.confirmed===true&&x.police)p.police=x.police}byId("total").textContent=places.length;byId("addr").textContent=places.filter(p=>p.address).length;byId("done").textContent=places.filter(p=>p.police).length;byId("pending").textContent=places.filter(p=>!p.police).length;render()}catch(e){byId("buttons").textContent="데이터 불러오기 오류: "+e.message}}
-byId("search").oninput=render;byId("download").onclick=csv;main();
-</script></body></html>
+function locationKeys(t){
+ const s=String(t||"").replace(/[ㅡ−–—－]/g,"-").replace(/\s*-\s*/g,"-");
+ const keys=new Set();
+ for(const m of s.matchAll(/([가-힣]{1,3})(동|리)\s*(산\s*)?(\d+(?:-\d+)?)/g)){
+  const tail=m[1].slice(-2);
+  const name=(tail.length===2&&/[구시군면읍]/.test(tail[0]))?tail.slice(1):tail;
+  keys.add(name+m[2]+(m[3]?"산":"")+m[4]);
+ }
+ for(const m of s.matchAll(/(?:^|[\s:/(,])([가-힣]{2,10}(?:로|길))\s*(\d+(?:-\d+)?)(?=$|[\s,()/]|번지|층)/g))
+  keys.add("road:"+m[1]+m[2]);
+ for(const m of s.matchAll(/(?:거모지구|신길2지구)\s*([A-Z]-\d+)/gi))
+  keys.add("block:"+m[0].replace(/\s+/g,"").toUpperCase());
+ return [...keys];
+}
+function classify(p){
+ const keys=locationKeys(p.address);
+ if(!p.address||!p.police) return {status:"확인 필요",note:"주소 또는 관할 경찰서 확인 필요",matches:[]};
+ const candidates=filings.filter(x=>keys.some(k=>x._keys.includes(k)));
+ const byPolice=candidates.filter(x=>x.agency===p.police);
+ const byBranch=byPolice.filter(x=>String(x.branch).replace("지부","")===p.branch);
+ const matches=byBranch.length?byBranch:byPolice.length?byPolice:candidates;
+ let status=byBranch.length?"연장":candidates.length?"확인 필요":"신규";
+ let note=candidates.length&&!byBranch.length?"기존 신고는 있으나 지부 또는 경찰서가 서로 다름":"";
+ if(reviewNotes[p.id]){
+  if(p.id==="소형-25"||p.id==="소형-26"||status!=="연장"){
+   status="확인 필요";note=reviewNotes[p.id];
+  }
+ }
+ matches.sort((a,b)=>String(b.date||"").localeCompare(String(a.date||"")));
+ return {status,note,matches};
+}
+function render(){
+ const names=["전체",...new Set(places.map(police))].sort((a,b)=>a==="전체"?-1:b==="전체"?1:a.localeCompare(b,"ko"));
+ byId("buttons").innerHTML=names.map(n=>'<button class="'+(selected===n?"active":"")+'" data-name="'+escapeHtml(n)+'">'+escapeHtml(n)+' ('+(n==="전체"?places.length:places.filter(x=>police(x)===n).length)+')</button>').join("");
+ byId("buttons").querySelectorAll("button").forEach(b=>b.onclick=()=>{selected=b.dataset.name;render()});
+ const q=byId("search").value.trim().toLowerCase(),status=byId("statusFilter").value;
+ visible=places.filter(p=>(selected==="전체"||police(p)===selected)&&(status==="전체"||p.comparison.status===status)&&[p.name,p.address,p.branch,p.kind,p.police,p.comparison.status].join(" ").toLowerCase().includes(q));
+ const counts=Object.fromEntries(["연장","신규","확인 필요"].map(k=>[k,visible.filter(p=>p.comparison.status===k).length]));
+ byId("summary").textContent=selected+" · "+visible.length+"건 표시 | 연장 "+counts["연장"]+" · 신규 "+counts["신규"]+" · 확인 필요 "+counts["확인 필요"];
+ byId("rows").innerHTML=visible.map((p,i)=>{
+  const c=p.comparison;
+  const flag=c.status==="연장"?"renew":c.status==="신규"?"new":"review";
+  const seen=c.matches.slice(0,2).map(x=>escapeHtml(x.docNo||"기존 기록")+" / "+escapeHtml(x.period||"기간 미기재")).join("<hr>");
+  return "<tr><td>"+(i+1)+"</td><td>"+escapeHtml(p.name)+"</td><td>"+escapeHtml(p.address||"주소 미기재")+"</td><td><span class=pill>"+escapeHtml(p.branch||"미분류")+"</span></td><td>"+escapeHtml(p.kind)+"</td><td>"+escapeHtml(police(p))+"</td><td><span class='status "+flag+"'>"+escapeHtml(c.status)+"</span>"+(c.note?"<div class=note>"+escapeHtml(c.note)+"</div>":"")+"</td><td>"+(seen||"—")+(c.matches.length>2?"<div class=note>기존 신고 총 "+c.matches.length+"건</div>":"")+"</td></tr>";
+ }).join("")||'<tr><td colspan="8">표시할 장소가 없습니다.</td></tr>';
+}
+function csv(){
+ const rows=[["번호","관할 경찰서","현장명","주소","지부","구분","신고 구분","검토사유","기존 접수번호","기존 신고기간"],
+ ...visible.map((p,i)=>[i+1,police(p),p.name,p.address,p.branch,p.kind,p.comparison.status,p.comparison.note,p.comparison.matches.map(x=>x.docNo).join(" / "),p.comparison.matches.map(x=>x.period).join(" / ")])];
+ const s="\ufeff"+rows.map(a=>a.map(v=>'"'+String(v??"").replaceAll('"','""')+'"').join(",")).join("\r\n");
+ const u=URL.createObjectURL(new Blob([s],{type:"text/csv;charset=utf-8"}));const a=document.createElement("a");a.href=u;a.download="집회신고_연장신규_"+selected+".csv";a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);
+}
+async function main(){
+ try{
+  const [raw,extra,juris,reported]=await Promise.all([read(source),read("./extra-locations.json"),read("./jurisdiction.json"),read(filingSource)]);
+  if(!Array.isArray(reported))throw Error("기존 집회신고 자료가 배열 형식이 아닙니다");
+  filings=reported.map(x=>({...x,_keys:locationKeys(x.location)}));
+  places=Object.entries(raw.sheets||{}).flatMap(([sheet,records])=>records.flatMap((p,i)=>{
+   const id=sheet+"-"+i,full=String(p["현장주소"]||"").trim();
+   const match=full.match(/^(.*?)\s*\(사무실\s*:\s*(.*?)\)\s*$/);
+   const base={id,name:p["현장명"],address:match?match[1].trim():full,branch:p["구분"],kind:sheet==="소형"?"소형":"현장",police:""};
+   return match?[base,{...base,id:id+"-office",name:p["현장명"]+" [사무실]",address:match[2].trim(),kind:"사무실"}]:[base];
+  }));
+  places.push(...(extra.places||[]).map(p=>({...p,kind:"별도 장소",police:""})));
+  for(const p of places){
+   const x=(juris.assignments||[]).find(x=>x.id===p.id||(x.address===p.address&&x.name===p.name));
+   if(x?.confirmed===true&&x.police)p.police=x.police;
+   p.comparison=classify(p);
+  }
+  byId("total").textContent=places.length;
+  byId("renew").textContent=places.filter(p=>p.comparison.status==="연장").length;
+  byId("new").textContent=places.filter(p=>p.comparison.status==="신규").length;
+  byId("review").textContent=places.filter(p=>p.comparison.status==="확인 필요").length;
+  byId("pending").textContent=places.filter(p=>!p.police||!p.address).length;
+  byId("sourceInfo").textContent="비교 기준: 기존 집회신고 "+reported.length+"건 · 현장 및 사무실 별도 장소 포함 · 페이지 접속 시 최신 JSON 재조회";
+  render();
+ }catch(e){
+  byId("buttons").textContent="자료 비교 실패: "+e.message;
+  byId("summary").textContent="신고 이력을 불러오지 못한 경우 신규로 임의 분류하지 않습니다.";
+ }
+}
+byId("search").oninput=render;
+byId("statusFilter").onchange=render;
+byId("download").onclick=csv;
+byId("print").onclick=()=>window.print();
+main();
+</script>
+</body></html>
