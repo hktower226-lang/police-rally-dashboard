@@ -1,1 +1,661 @@
-{"assignments":[]}
+{
+  "assignments": [
+    {
+      "id": "현장별교섭현황-0",
+      "name": "sm경남",
+      "address": "권선구 당수동 440",
+      "police": "수원권선경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-1",
+      "name": "영통역 우미린",
+      "address": "영통구 영통동 999-2",
+      "police": "수원영통경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-2",
+      "name": "망포역 대우",
+      "address": " 영통구 영통동 980,2",
+      "police": "수원영통경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-3",
+      "name": "고등동개성건설",
+      "address": "팔달구 고등동 334-1",
+      "police": "수원팔달경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-4",
+      "name": "고등동 SM동아",
+      "address": "팔달구 고등동 334",
+      "police": "수원팔달경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-5",
+      "name": "동아건설산업",
+      "address": "권선구 평동 135-1",
+      "police": "수원권선경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-6",
+      "name": "당수b-3bl 대광건영",
+      "address": "당수동 484",
+      "police": "수원권선경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-7",
+      "name": "(주)우건",
+      "address": "권선구 호매실동 1396",
+      "police": "수원권선경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-8",
+      "name": "하남 교산대우건설 A-2블럭",
+      "address": "천현동 130일원",
+      "police": "하남경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-9",
+      "name": "위례 포스코",
+      "address": "성남시 수정구 창곡동 533",
+      "police": "성남수정경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-10",
+      "name": "업무시설(주)영신",
+      "address": "분당구 정자동 163",
+      "police": "분당경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-11",
+      "name": "코오롱건설",
+      "address": "수정구 금토동 296-3",
+      "police": "성남수정경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-12",
+      "name": "성남 금토동 포스코현장",
+      "address": "수정구 금토동 273-3",
+      "police": "성남수정경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-13",
+      "name": "낙생지구 DL",
+      "address": "동원동215-2번지",
+      "police": "분당경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-14",
+      "name": "DL발전소현장",
+      "address": "성남시 분당구 분당동 186번지",
+      "police": "분당경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-15",
+      "name": "북오산내삼미1구역 GS건설",
+      "address": "내삼미동905번지",
+      "police": "오산경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-16",
+      "name": "북오산내삼미2구역 GS건설 2블럭",
+      "address": "내삼미동288",
+      "police": "오산경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-17",
+      "name": "평택고덕 ABC14 한양건설",
+      "address": null,
+      "police": "평택경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-18",
+      "name": "평택고덕ABC36블럭우미건설",
+      "address": "고덕동 142번지",
+      "police": "평택경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-19",
+      "name": "평택고덕ABC37블럭태왕건설",
+      "address": "고덕동산106-1번지",
+      "police": "평택경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-20",
+      "name": "평택고덕Aa-38블럭효성중공업",
+      "address": "고덕동산506-3번지",
+      "police": "평택경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-21",
+      "name": "평택고덕A31블럭현대건설(힐스테이트)",
+      "address": "고덕동1600번지일원",
+      "police": "평택경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-22",
+      "name": "평택고덕 A12블럭현대건설",
+      "address": "고덕동산332번지",
+      "police": "평택경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-23",
+      "name": "평택고덕 A13블럭계룡건설",
+      "address": "고덕동산353번지",
+      "police": "평택경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-24",
+      "name": "평택고덕A65블럭현대건설",
+      "address": "고덕동1693-2773번지",
+      "police": "평택경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-25",
+      "name": "평택고덕 A34블럭현대건설",
+      "address": "고덕동산150-5번지",
+      "police": "평택경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-26",
+      "name": "평택고덕 A35블럭현대건설",
+      "address": "고덕동산156번지",
+      "police": "평택경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-27",
+      "name": "평택칠괴동 두산에너빌건설",
+      "address": "칠괴동138번지",
+      "police": "평택경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-28",
+      "name": "평택고덕코오롱건설(사무6동)",
+      "address": "평택시 첨단대로 280 (사무실: 평택시 삼성로 117)",
+      "police": "평택경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-29",
+      "name": "안성당왕동금호2차(지역주택)",
+      "address": "당왕동146-6번지",
+      "police": "안성경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-30",
+      "name": "한화건설데이터센타2",
+      "address": "안성시 양성면 추곡리 179번지",
+      "police": "안성경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-31",
+      "name": "평택 지제역 한화건설",
+      "address": "세교동 725",
+      "police": "평택경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-35",
+      "name": "양산동 헤리티지자이",
+      "address": "오산시 양산동 328-2",
+      "police": "오산경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-36",
+      "name": "고림2지구 동문건설",
+      "address": "처인구 고림동620번지",
+      "police": "용인동부경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-37",
+      "name": "신광교클라우드현대엔지니어링",
+      "address": "영덕동784",
+      "police": "용인동부경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-38",
+      "name": "용인클러스터1차 기숙사 동부건설",
+      "address": "원삼면 독성리551ㅡ6",
+      "police": "용인동부경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-39",
+      "name": "양지 서희스타힐스 하이뷰 서희건설",
+      "address": "양지리 산 105-8",
+      "police": "용인동부경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-40",
+      "name": "보라동 오피스텔 동부건설",
+      "address": "기흥구 보라동623",
+      "police": "용인동부경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-41",
+      "name": "원삼 동일하이빌1BL",
+      "address": "원삼면 고당리 350-3",
+      "police": "용인동부경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-42",
+      "name": "포곡 한림제약 녹십자 현장",
+      "address": "유방동205",
+      "police": "용인동부경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-43",
+      "name": "두산 R&D 센터",
+      "address": "수지구 죽전동 21-2",
+      "police": "용인서부경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-44",
+      "name": "평촌동 르씨엘 롯데건설",
+      "address": "평촌동 934번지",
+      "police": "안양동안경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-45",
+      "name": "안양 만안구 상록지구 Gs건설",
+      "address": "만안구안양동394-10",
+      "police": "안양만안경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-46",
+      "name": "우성4차아파트주택정비사업 한신공영",
+      "address": "삼동 244-1일원",
+      "police": "의왕경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-47",
+      "name": "부곡의왕역 SK뷰",
+      "address": "의왕시 삼동 192-244",
+      "police": "의왕경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-48",
+      "name": "의왕 고천 나구역 sk건설",
+      "address": "고천동 265번지 일원",
+      "police": "의왕경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-49",
+      "name": "과천 주공 4단지 재개발 GS건설",
+      "address": "과천시 별양동 7번지",
+      "police": "과천경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-50",
+      "name": "대야미까뮤",
+      "address": "군포둔대동77",
+      "police": "군포경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-51",
+      "name": "초평동제일풍경체",
+      "address": "초평동71ㅡ7일원",
+      "police": "의왕경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-52",
+      "name": "의왕고천나구현대산업개발",
+      "address": "고천동265번지",
+      "police": "의왕경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-53",
+      "name": "과천지식산업5블럭 효성건설",
+      "address": "과천시 갈현동 산37-9",
+      "police": "과천경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-54",
+      "name": "리젠시빌건설",
+      "address": "의왕시 학의동 892 일원",
+      "police": "의왕경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-55",
+      "name": "시화국가데이터단지(현대건설)",
+      "address": "성곡동712",
+      "police": "안산단원경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-56",
+      "name": "시흥 대야동 현대엔지니어링",
+      "address": "대야동 140-5 (사무실: 호현로147 모델하우스 대야동294-28)",
+      "police": "시흥경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-57",
+      "name": "시흥하중 A-3BL 반도건설",
+      "address": "하중동 409-2 (사무실: 하중로 181)",
+      "police": "시흥경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-58",
+      "name": "안산신길2 B-1BL 동부건설",
+      "address": " 단원구 신길동 109일원",
+      "police": "안산단원경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-59",
+      "name": "광주 오포 KR산업 물류창고",
+      "address": " 문형동 911번지",
+      "police": "광주경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-60",
+      "name": "이천 갈산동 일신건영",
+      "address": "갈산동 572-1번지",
+      "police": "이천경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-61",
+      "name": "광주 롯데캐슬 시그니처(1단지)",
+      "address": "광주시 양벌동 산54-3 일원",
+      "police": "광주경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-62",
+      "name": "시흥거모지구 BS한양건설 A-3",
+      "address": "시흥거모지구 A-3",
+      "police": "시흥경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-63",
+      "name": "시흥거모지구 CA이앤씨 S-1 (중앙하이츠)",
+      "address": "시흥거모지구 S-1",
+      "police": "시흥경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-64",
+      "name": "안산신길2지구 동문건설 A-6",
+      "address": "안산신길2지구 A-6",
+      "police": "안산단원경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-65",
+      "name": "안산 SK데이터센터",
+      "address": "안산시 단원구 성곡동 668-1",
+      "police": "안산단원경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-0",
+      "name": "장현반다비체육센타",
+      "address": " 장현동703",
+      "police": "시흥경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-1",
+      "name": "안산 아라종합건설",
+      "address": "고잔동531-5",
+      "police": "안산단원경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-2",
+      "name": "제로투엠오피스텔",
+      "address": "고잔동542-1",
+      "police": "안산단원경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-4",
+      "name": "더원 H&C",
+      "address": "금정동 743 - 22",
+      "police": "군포경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-5",
+      "name": "정은종합건설",
+      "address": "내손동729번지",
+      "police": "의왕경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-6",
+      "name": "이강건설",
+      "address": "의왕시 오전로 133번지 일원",
+      "police": "의왕경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-7",
+      "name": "이인건설",
+      "address": "안양시 만안구 528-14번지 일원",
+      "police": "안양만안경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-8",
+      "name": "창성종합건설",
+      "address": "장안구 연무동 240-3",
+      "police": "수원장안경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-9",
+      "name": "승일실업",
+      "address": "이의동 1258번지",
+      "police": "수원영통경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-10",
+      "name": "서영건설플러스",
+      "address": "고등동 329",
+      "police": "수원팔달경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-11",
+      "name": "하이안건설",
+      "address": "권선구 권선동 1009-1,1",
+      "police": "수원권선경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-12",
+      "name": "화성능동벌말초등학교",
+      "address": "화성시 능동 680-2",
+      "police": "화성동탄경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-13",
+      "name": "디에이건설",
+      "address": "화성시 오산동 968-1",
+      "police": "화성동탄경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-14",
+      "name": "평택 팽성 성우호텔",
+      "address": "평택시 안정리 192-16",
+      "police": "평택경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-15",
+      "name": "동일건설",
+      "address": "평택고덕동1857번지",
+      "police": "평택경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-16",
+      "name": "토요코인호텔 평택역점",
+      "address": "평택시 평택동 188-12",
+      "police": "평택경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-17",
+      "name": "광진건설",
+      "address": "오산시 고현동 12-23",
+      "police": "오산경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-18",
+      "name": "광주 송정동 복합시설 신축공사",
+      "address": "송정동 692-2",
+      "police": "광주경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-19",
+      "name": "임대형기숙사 및 근린생활시설 신축",
+      "address": " 곤지암읍 곤지암리 435-15",
+      "police": "광주경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-20",
+      "name": "연세병원",
+      "address": " 학암동 649번지",
+      "police": "성남수정경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-21",
+      "name": "남성건설",
+      "address": "성남동 2314번지",
+      "police": "성남중원경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-22",
+      "name": "금곡동 복합청사",
+      "address": "성남시 분당구 금곡동 174번지",
+      "police": "분당경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-23",
+      "name": "성남 대장동 (사회복지시설)",
+      "address": "대장동631-2",
+      "police": "분당경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-24",
+      "name": "성남동 LH (신규)",
+      "address": "성남동 3199",
+      "police": "성남중원경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-25",
+      "name": "성남동 캠코이에스 오피스텔 (신규)",
+      "address": "분당구 수내동14",
+      "police": "분당경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-26",
+      "name": "롯데백화점 증축및리모델링",
+      "address": "분당구 수내동",
+      "police": "분당경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-27",
+      "name": "원삼 반도체 커뮤니티센터",
+      "address": "처인구 원삼면 독성리 1025",
+      "police": "용인동부경찰서",
+      "confirmed": true
+    }
+  ],
+  "review_pending": [
+    {
+      "id": "현장별교섭현황-32",
+      "name": "향남kcc",
+      "address": "하길리404",
+      "branch": "남서"
+    },
+    {
+      "id": "현장별교섭현황-33",
+      "name": "태왕이엔씨 병점동 890,891",
+      "address": "병점동 890,891",
+      "branch": "남서"
+    },
+    {
+      "id": "현장별교섭현황-34",
+      "name": "동화 2지구 지역주택 조합",
+      "address": "동화리 238-31",
+      "branch": "남서"
+    },
+    {
+      "id": "소형-3",
+      "name": "병점 서영플러스",
+      "address": "병점동 884-1",
+      "branch": "남서"
+    }
+  ],
+  "notes": "행정구역 기준 1차 분류. 실제 신고 제출 전 경찰서 확인 필요."
+}
