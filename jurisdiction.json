@@ -650,6 +650,27 @@
       "address": "병점동 884-1",
       "police": "화성동탄경찰서",
       "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-28-office",
+      "name": "평택고덕코오롱건설(사무6동) [사무실]",
+      "address": "평택시 삼성로 117",
+      "police": "평택경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-56-office",
+      "name": "시흥 대야동 현대엔지니어링 [사무실]",
+      "address": "호현로147 모델하우스 대야동294-28",
+      "police": "시흥경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "현장별교섭현황-57-office",
+      "name": "시흥하중 A-3BL 반도건설 [사무실]",
+      "address": "하중로 181",
+      "police": "시흥경찰서",
+      "confirmed": true
     }
   ],
   "review_pending": [
