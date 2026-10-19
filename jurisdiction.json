@@ -604,27 +604,6 @@
       "confirmed": true
     },
     {
-      "id": "소형-25",
-      "name": "성남동 캠코이에스 오피스텔 (신규)",
-      "address": "분당구 수내동14",
-      "police": "분당경찰서",
-      "confirmed": true
-    },
-    {
-      "id": "소형-26",
-      "name": "롯데백화점 증축및리모델링",
-      "address": "분당구 수내동",
-      "police": "분당경찰서",
-      "confirmed": true
-    },
-    {
-      "id": "소형-27",
-      "name": "원삼 반도체 커뮤니티센터",
-      "address": "처인구 원삼면 독성리 1025",
-      "police": "용인동부경찰서",
-      "confirmed": true
-    },
-    {
       "id": "현장별교섭현황-32",
       "name": "향남kcc",
       "address": "하길리404",
@@ -691,6 +670,20 @@
       "id": "office-wonsam",
       "name": "원삼 반도체 커뮤니티센터 [사무실]",
       "address": "용인시 처인구 원삼면 고당리 90-11",
+      "police": "용인동부경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-25",
+      "name": "롯데백화점",
+      "address": "분당구 수내동 14",
+      "police": "분당경찰서",
+      "confirmed": true
+    },
+    {
+      "id": "소형-26",
+      "name": "원삼 반도체 커뮤니티센터",
+      "address": "처인구 원삼면 독성리 1025",
       "police": "용인동부경찰서",
       "confirmed": true
     }
