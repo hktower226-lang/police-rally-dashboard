@@ -571,8 +571,9 @@
       "id": "소형-20",
       "name": "연세병원",
       "address": " 학암동 649번지",
-      "police": "성남수정경찰서",
-      "confirmed": true
+      "police": "하남경찰서",
+      "confirmed": true,
+      "source_note": "기존 신고 현황 assemblyData의 학암동 649 하남경찰서 기록과 대조"
     },
     {
       "id": "소형-21",
