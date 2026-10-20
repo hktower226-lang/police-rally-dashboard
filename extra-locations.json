@@ -32,6 +32,12 @@
       "name": "현송건설",
       "address": "경기도 안양시 동안구 관평로305번길 22",
       "branch": "북부"
+    },
+    {
+      "id": "extra-hyeonsong-anyang",
+      "name": "현송건설",
+      "address": "경기도 안양시 동안구 관평로305번길 22",
+      "branch": "북부"
     }
   ]
 }
