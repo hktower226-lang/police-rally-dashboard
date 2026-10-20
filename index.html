@@ -44,7 +44,7 @@ a{color:#98d0ff}
 <body>
 <main class="wrap">
 <h1>관할 경찰서별 집회신고 대상 현황판</h1>
-<p class="muted">현장 현황 JSON + 기존 집회신고 내역 실시간 비교 · 경찰서별 분류 · 지부 자동 표기</p>
+
 <div class="grid">
 <div class="metric">전체 신고 장소<div class="big" id="total">—</div></div>
 <div class="metric">연장 대상<div class="big" id="renew">—</div></div>
@@ -208,7 +208,7 @@ async function main(){
   byId("new").textContent=places.filter(p=>p.comparison.status==="신규").length;
   byId("review").textContent=places.filter(p=>p.comparison.status==="확인 필요").length;
   byId("pending").textContent=places.filter(p=>!p.police||!p.address).length;
-  byId("sourceInfo").textContent="비교 기준: 기존 집회신고 "+reported.length+"건 · 사용자 확인 연장 "+Object.keys(decisions).length+"건 · 현장 및 사무실 별도 장소 포함 · 페이지 접속 시 최신 JSON 재조회";
+  byId("sourceInfo").textContent="";
   render();
  }catch(e){
   byId("buttons").textContent="자료 비교 실패: "+e.message;
