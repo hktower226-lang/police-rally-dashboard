@@ -20,6 +20,18 @@
       "address": "용인시 처인구 원삼면 고당리 90-11",
       "branch": "용인",
       "source_id": "소형-26"
+    },
+    {
+      "id": "extra-seongnam-city-hall",
+      "name": "성남시청",
+      "address": "경기도 성남시 중원구 성남대로 997",
+      "branch": "북부"
+    },
+    {
+      "id": "extra-hyeonsong-anyang-office",
+      "name": "현송건설",
+      "address": "경기도 안양시 동안구 관평로305번길 22",
+      "branch": "북부"
     }
   ]
 }
