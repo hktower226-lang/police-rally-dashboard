@@ -109,21 +109,23 @@ function checkYongin(p){return /기흥구|영덕동|보라동|신갈동|구갈�
 /* 실무상 기존 신고서와 주소·지부의 확인이 필요한 장소.
    향후 원본 주소나 신고 이력이 명확해지면 항목을 수정/해제할 수 있습니다. */
 const reviewNotes={
-"현장별교섭현황-13":"현장 동원동 215-2, 기존 신고 동원동 217로 지번이 다름",
-"현장별교섭현황-25":"칠괴동 138과 기존 두산 신고 칠괴동 516-1이 다름",
-"현장별교섭현황-30":"하길리 404와 기존 향남 신고 하길리 404-2가 다름",
-"현장별교섭현황-35":"신광교클라우드시티 기존 신고 영덕동 1353, 현장 자료는 영덕동 784",
-"현장별교섭현황-46":"기존 고천나구역 신고 고천동 517, 현장 자료는 265",
-"현장별교섭현황-50":"기존 고천나구역 신고 고천동 517, 현장 자료는 265",
-"현장별교섭현황-51":"기존 효성해링턴스퀘어 신고는 상업5BL, 현장 주소는 갈현동 산37-9",
-"현장별교섭현황-55-office":"하중로 181과 기존 신고의 하중동 181은 주소 표기가 다르므로 동일 장소 확인 필요",
-"현장별교섭현황-56":"안산 신길동 109, 기존 동부건설 신고는 B2B2로 표기되어 확인 필요",
-"현장별교섭현황-62":"안산 신길2지구 A-6, 기존 신고는 A-2로 구획이 다름",
-"현장별교섭현황-29":"평택 지제역 한화건설은 기존 신고가 '평택지제역 일원'으로 기재되어 정확한 주소 비교 필요",
-"현장별교섭현황-40":"한림제약 기존 신고에 상세 지번이 없어 포곡·유방동 현장 동일 여부 확인 필요"
+  "현장별교섭현황|낙생지구dl|동원동215-2번지": "현장 동원동 215-2, 기존 신고 동원동 217로 지번이 다름",
+  "현장별교섭현황|평택칠괴동두산에너빌건설|칠괴동138번지": "칠괴동 138과 기존 두산 신고 칠괴동 516-1이 다름",
+  "현장별교섭현황|향남kcc|하길리404": "하길리 404와 기존 향남 신고 하길리 404-2가 다름",
+  "현장별교섭현황|신광교클라우드현대엔지니어링|영덕동784": "신광교클라우드시티 기존 신고 영덕동 1353, 현장 자료는 영덕동 784",
+  "현장별교섭현황|의왕고천나구역sk건설|고천동265번지일원": "기존 고천나구역 신고 고천동 517, 현장 자료는 265",
+  "현장별교섭현황|의왕고천나구현대산업개발|고천동265번지": "기존 고천나구역 신고 고천동 517, 현장 자료는 265",
+  "현장별교섭현황|과천지식산업5블럭효성건설|과천시갈현동산37-9": "기존 효성해링턴스퀘어 신고는 상업5BL, 현장 주소는 갈현동 산37-9",
+  "현장별교섭현황|시흥하중a-3bl반도건설[사무실]|하중로181": "하중로 181과 기존 신고의 하중동 181은 주소 표기가 다르므로 동일 장소 확인 필요",
+  "현장별교섭현황|안산신길2b-1bl동부건설|단원구신길동109일원": "안산 신길동 109, 기존 동부건설 신고는 B2B2로 표기되어 확인 필요",
+  "현장별교섭현황|안산신길2지구동문건설a-6|안산신길2지구a-6": "안산 신길2지구 A-6, 기존 신고는 A-2로 구획이 다름",
+  "현장별교섭현황|평택지제역한화건설|세교동725": "평택 지제역 한화건설은 기존 신고가 '평택지제역 일원'으로 기재되어 정확한 주소 비교 필요",
+  "현장별교섭현황|포곡한림제약녹십자현장|유방동205": "한림제약 기존 신고에 상세 지번이 없어 포곡·유방동 현장 동일 여부 확인 필요"
 };
 async function read(url){const r=await fetch(url+(url.includes("?")?"&":"?")+"v="+Date.now(),{cache:"no-store"});if(!r.ok)throw Error(url+" HTTP "+r.status);return r.json()}
 function police(p){return p.police||"관할 확인 필요"}
+function normalizePlace(v){return String(v??"").normalize("NFKC").toLowerCase().replace(/[ㅡ−–—－]/g,"-").replace(/[\s,，]/g,"");}
+function stableSiteKey(p){return p.sourceSheet+"|"+normalizePlace(p.name)+"|"+normalizePlace(p.address)}
 function locationKeys(t){
  const s=String(t||"").replace(/[ㅡ−–—－]/g,"-").replace(/\s*-\s*/g,"-");
  const keys=new Set();
@@ -140,22 +142,22 @@ function locationKeys(t){
 }
 function classify(p){
  const keys=locationKeys(p.address);
- if(!p.address||!p.police){const x=decisions[p.id];return {status:x?.status==="연장"?"연장":"확인 필요",note:x?.note||"주소 또는 관할 경찰서 확인 필요",matches:[]};}
+ if(!p.address||!p.police){const x=decisions[p.stableKey];return {status:x?.status==="연장"?"연장":"확인 필요",note:x?.note||"주소 또는 관할 경찰서 확인 필요",matches:[]};}
  const candidates=filings.filter(x=>keys.some(k=>x._keys.includes(k)));
  const byPolice=candidates.filter(x=>x.agency===p.police);
  const byBranch=byPolice.filter(x=>String(x.branch).replace("지부","")===p.branch);
  const matches=byBranch.length?byBranch:byPolice.length?byPolice:candidates;
  let status=byBranch.length?"연장":candidates.length?"확인 필요":"신규";
  let note=candidates.length&&!byBranch.length?"기존 신고는 있으나 지부 또는 경찰서가 서로 다름":"";
- if(reviewNotes[p.id]){
-  if(p.id==="소형-25"||p.id==="소형-26"||status!=="연장"){
-   status="확인 필요";note=reviewNotes[p.id];
+ if(reviewNotes[p.stableKey]){
+  if(status!=="연장"){
+   status="확인 필요";note=reviewNotes[p.stableKey];
   }
  }
- const decided=decisions[p.id];
+ const decided=decisions[p.stableKey];
  if(decided?.status==="연장"){
   status="연장";
-  note=(decided.note||"사용자 확인에 따라 연장으로 분류")+(reviewNotes[p.id]?" 기존 신고와의 차이: "+reviewNotes[p.id]:"");
+  note=(decided.note||"사용자 확인에 따라 연장으로 분류")+(reviewNotes[p.stableKey]?" 기존 신고와의 차이: "+reviewNotes[p.stableKey]:"");
  }
  matches.sort((a,b)=>String(b.date||"").localeCompare(String(a.date||"")));
  return {status,note,matches};
@@ -194,13 +196,14 @@ async function main(){
   places=Object.entries(raw.sheets||{}).flatMap(([sheet,records])=>records.flatMap((p,i)=>{
    const id=sheet+"-"+i,full=String(p["현장주소"]||"").trim();
    const match=full.match(/^(.*?)\s*\(사무실\s*:\s*(.*?)\)\s*$/);
-   const base={id,name:p["현장명"],address:match?match[1].trim():full,branch:p["구분"],kind:sheet==="소형"?"소형":"현장",police:""};
+   const base={id,sourceSheet:sheet,name:p["현장명"],address:match?match[1].trim():full,branch:p["구분"],kind:sheet==="소형"?"소형":"현장",police:""};
    return match?[base,{...base,id:id+"-office",name:p["현장명"]+" [사무실]",address:match[2].trim(),kind:"사무실"}]:[base];
   }));
-  places.push(...(extra.places||[]).map(p=>({...p,kind:"별도 장소",police:""})));
+  places.push(...(extra.places||[]).map(p=>({...p,sourceSheet:"추가",kind:"별도 장소",police:""})));
   for(const p of places){
-   const x=(juris.assignments||[]).find(x=>x.id===p.id||(x.address===p.address&&x.name===p.name));
-   if(x?.confirmed===true&&x.police)p.police=x.police;
+   p.stableKey=stableSiteKey(p);
+   const x=(juris.assignments||[]).find(x=>x.stable_key===p.stableKey);
+   if(x?.confirmed===true&&x.police&&x.name===p.name&&normalizePlace(x.address)===normalizePlace(p.address))p.police=x.police;
    p.comparison=classify(p);
   }
   byId("total").textContent=places.length;
