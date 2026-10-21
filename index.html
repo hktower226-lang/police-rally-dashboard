@@ -200,6 +200,8 @@ async function main(){
    return match?[base,{...base,id:id+"-office",name:p["현장명"]+" [사무실]",address:match[2].trim(),kind:"사무실"}]:[base];
   }));
   places.push(...(extra.places||[]).map(p=>({...p,sourceSheet:"추가",kind:"별도 장소",police:""})));
+  const deferredNames=new Set(["영통역 우미린","망포역 대우","장현반다비체육센타","안산 아라종합건설"]);
+  places=places.filter(item=>!deferredNames.has(item.name));
   for(const p of places){
    p.stableKey=stableSiteKey(p);
    const x=(juris.assignments||[]).find(x=>x.stable_key===p.stableKey);
