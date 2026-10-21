@@ -85,6 +85,16 @@
       "reviewed_on": "2026-10-20",
       "note": "기존 소형-25·소형-26 동일 현장으로 사용자 확인. 롯데백화점으로 통합·중복 제거.",
       "site_name": "롯데백화점"
+    },
+    "현장별교섭현황|안성당왕동금호2차(지역주택)|당왕동146-6번지": {
+      "status": "연장",
+      "reviewed_on": "2026-10-21",
+      "note": "사용자 확인: 기존 신고 목록 누락, 연장 대상"
+    },
+    "현장별교섭현황|한화건설데이터센타2|안성시양성면추곡리179번지": {
+      "status": "연장",
+      "reviewed_on": "2026-10-21",
+      "note": "사용자 확인: 기존 신고 목록 누락, 연장 대상"
     }
   },
   "key_scheme": "stable_key: source_sheet|normalized site name|normalized site address"
