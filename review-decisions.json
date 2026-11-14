@@ -101,6 +101,12 @@
       "reviewed_on": "2026-11-14",
       "site_name": "성남 금토동 포스코현장",
       "note": "북부지부 소속 확인. 기존 신고자료의 동부지부 표기는 잘못된 소속으로 처리"
+    },
+    "추가|과천코오롱본사|경기도과천시코오롱로11(별양동)": {
+      "status": "연장",
+      "site_name": "과천 코오롱 본사",
+      "reviewed_on": "2026-11-14",
+      "note": "기존 과천경찰서 신고(2026-10-22, 2026-10-24~11-20) 확인. 정기 집회신고 고정 포함 대상"
     }
   },
   "key_scheme": "stable_key: source_sheet|normalized site name|normalized site address"
