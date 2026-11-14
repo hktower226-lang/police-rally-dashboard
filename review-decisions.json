@@ -95,6 +95,12 @@
       "status": "연장",
       "reviewed_on": "2026-10-21",
       "note": "사용자 확인: 기존 신고 목록 누락, 연장 대상"
+    },
+    "현장별교섭현황|성남금토동포스코현장|수정구금토동273-3": {
+      "status": "연장",
+      "reviewed_on": "2026-11-14",
+      "site_name": "성남 금토동 포스코현장",
+      "note": "북부지부 소속 확인. 기존 신고자료의 동부지부 표기는 잘못된 소속으로 처리"
     }
   },
   "key_scheme": "stable_key: source_sheet|normalized site name|normalized site address"
