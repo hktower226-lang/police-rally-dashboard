@@ -946,6 +946,16 @@
       "confirmed": true,
       "stable_key": "추가|현송건설|경기도안양시동안구관평로305번길22",
       "source_sheet": "추가"
+    },
+    {
+      "id": "fixed-kolon-headquarters",
+      "source_sheet": "추가",
+      "name": "과천 코오롱 본사",
+      "address": "경기도 과천시 코오롱로 11 (별양동)",
+      "stable_key": "추가|과천코오롱본사|경기도과천시코오롱로11(별양동)",
+      "police": "과천경찰서",
+      "confirmed": true,
+      "permanent": true
     }
   ],
   "review_pending": [],
