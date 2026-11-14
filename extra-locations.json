@@ -20,6 +20,14 @@
       "address": "용인시 처인구 원삼면 고당리 90-11",
       "branch": "용인",
       "source_id": "소형-25"
+    },
+    {
+      "id": "fixed-kolon-headquarters",
+      "name": "과천 코오롱 본사",
+      "address": "경기도 과천시 코오롱로 11 (별양동)",
+      "branch": "북서",
+      "permanent": true,
+      "note": "정기 집회신고에 항상 포함"
     }
   ]
 }
