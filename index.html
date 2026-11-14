@@ -43,7 +43,8 @@ a{color:#98d0ff}
 </head>
 <body>
 <main class="wrap">
-<h1>관할 경찰서별 집회신고 대상 현황판</h1>
+<h1>11월 17일 정기 집회신고 준비 현황판</h1>
+<p class="muted">2026.11.14 현장현황 기준 · 6개 팀별 신고 장소</p>
 
 <div class="grid">
 <div class="metric">전체 신고 장소<div class="big" id="total">—</div></div>
@@ -200,7 +201,7 @@ async function main(){
    return match?[base,{...base,id:id+"-office",name:p["현장명"]+" [사무실]",address:match[2].trim(),kind:"사무실"}]:[base];
   }));
   places.push(...(extra.places||[]).map(p=>({...p,sourceSheet:"추가",kind:"별도 장소",police:""})));
-  const deferredNames=new Set(["영통역 우미린","망포역 대우","장현반다비체육센타","안산 아라종합건설"]);
+  const deferredNames=new Set(["영통역 우미린","망포역 대우","장현반다비체육센타","안산 아라종합건설","업무시설(주)영신","이인건설","김량장동 공동주택·업무시설 신축공사 (다원종합건설)"]);
   places=places.filter(item=>!deferredNames.has(item.name));
   for(const p of places){
    p.stableKey=stableSiteKey(p);
@@ -213,7 +214,7 @@ async function main(){
   byId("new").textContent=places.filter(p=>p.comparison.status==="신규").length;
   byId("review").textContent=places.filter(p=>p.comparison.status==="확인 필요").length;
   byId("pending").textContent=places.filter(p=>!p.police||!p.address).length;
-  byId("sourceInfo").textContent="";
+  byId("sourceInfo").textContent="현장현황 2026.11.14 동기화 · 공사 중지 및 이전 임시 제외 대상은 이번 제출 목록에서 제외";
   render();
  }catch(e){
   byId("buttons").textContent="자료 비교 실패: "+e.message;
