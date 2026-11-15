@@ -956,6 +956,16 @@
       "police": "과천경찰서",
       "confirmed": true,
       "permanent": true
+    },
+    {
+      "id": "fixed-doosan-enerbility-bundang",
+      "source_sheet": "추가",
+      "name": "성남 두산에너빌리티 (분당두산타워)",
+      "address": "경기도 성남시 분당구 정자일로 155",
+      "stable_key": "추가|성남두산에너빌리티(분당두산타워)|경기도성남시분당구정자일로155",
+      "police": "분당경찰서",
+      "confirmed": true,
+      "permanent": true
     }
   ],
   "review_pending": [],
