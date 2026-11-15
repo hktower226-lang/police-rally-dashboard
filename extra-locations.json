@@ -28,6 +28,14 @@
       "branch": "북서",
       "permanent": true,
       "note": "정기 집회신고에 항상 포함"
+    },
+    {
+      "id": "fixed-doosan-enerbility-bundang",
+      "name": "성남 두산에너빌리티 (분당두산타워)",
+      "address": "경기도 성남시 분당구 정자일로 155",
+      "branch": "북부",
+      "permanent": true,
+      "note": "정기 집회신고에 항상 포함 · 첫 신고는 신규로 표시"
     }
   ]
 }
