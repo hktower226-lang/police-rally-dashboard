@@ -147,8 +147,9 @@ function classify(p){
  const byPolice=candidates.filter(x=>x.agency===p.police);
  const byBranch=byPolice.filter(x=>String(x.branch).replace("지부","")===p.branch);
  const matches=byBranch.length?byBranch:byPolice.length?byPolice:candidates;
- let status=byBranch.length?"연장":candidates.length?"확인 필요":"신규";
- let note=candidates.length&&!byBranch.length?"기존 신고는 있으나 지부 또는 경찰서가 서로 다름":"";
+ const branchTransferred=!byBranch.length&&byPolice.some(x=>["남부","남서"].includes(p.branch)&&["남부","남서"].includes(String(x.branch).replace("지부","")));
+ let status=byBranch.length||branchTransferred?"연장":candidates.length?"확인 필요":"신규";
+ let note=branchTransferred?"남부·남서지부 관할 변경 반영. 기존 신고서의 종전 지부명과 다름":candidates.length&&!byBranch.length?"기존 신고는 있으나 지부 또는 경찰서가 서로 다름":"";
  if(reviewNotes[p.stableKey]){
   if(status!=="연장"){
    status="확인 필요";note=reviewNotes[p.stableKey];
